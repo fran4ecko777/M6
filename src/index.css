@@ -2,9 +2,15 @@
   width: 350px;
   border-radius: 10px;
   border: 1px solid rgb(243, 243, 243);
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(245, 163, 56);
   padding: 8px;
   margin: 0 auto;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 h1 {
