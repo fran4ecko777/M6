@@ -14,15 +14,13 @@ class СalorieСounter extends Component {
     }
 
     checkAllInputsNotEpmty(newState) {
-        if (!newState.age) {
-            return false
-        } else if (!newState.weight) {
-            return false
-        } else if (!newState.height) {
-            return false
-        } else if (!newState.gender) {
-            return false
-        } else if (!newState.activity) {
+        if (
+            !newState.age
+            || !newState.weight
+            || !newState.height
+            || !newState.gender
+            || !newState.activity
+        ) {
             return false
         }
         return true
@@ -55,17 +53,11 @@ class СalorieСounter extends Component {
         return newState
     }
 
-    handlerChandeInputGender = (event) => {
+    handlerChangeRadioButton = (event) => {
         let newState = this.changeValuesInState(event)
         let allInputsNotEpmty = this.checkAllInputsNotEpmty(newState)
         this.setState({isValid: !allInputsNotEpmty ? false : true})
     }
-
-    handlerChandeInputActivity = (event) => {
-        let newState = this.changeValuesInState(event)
-        let allInputsNotEpmty = this.checkAllInputsNotEpmty(newState)
-        this.setState({isValid: !allInputsNotEpmty ? false : true})
-    }    
 
     getGenderCoefficient() {
         if (this.state.gender === "male") {
@@ -125,6 +117,13 @@ class СalorieСounter extends Component {
         console.log(this.getCaloriesMax())
     }
 
+    clearForm = (event) => {
+        event.preventDefault();
+        console.log('Привет, Мир!');
+
+
+    }
+
     render () {
         return(
             <main>
@@ -134,9 +133,9 @@ class СalorieСounter extends Component {
                         <h2>Пол</h2>
                         <div className="button_gender">
                             <h3>Мужчина</h3>
-                            <input type="radio" name="gender" onChange={this.handlerChandeInputGender} value="male"/>
+                            <input type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="male"/>
                             <h3>Женщина</h3>
-                            <input type="radio" name="gender" onChange={this.handlerChandeInputGender} value="female"/>
+                            <input type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="female"/>
                         </div>
                         <h3>Физические параметры</h3>
                         <div>
@@ -180,7 +179,7 @@ class СalorieСounter extends Component {
                         <div>
                             <div className="radio_input">
                                 <input 
-                                    onChange={this.handlerChandeInputActivity} 
+                                    onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value='min'
@@ -189,7 +188,7 @@ class СalorieСounter extends Component {
                             </div>
                             <div className="radio_input">
                                 <input 
-                                    onChange={this.handlerChandeInputActivity} 
+                                    onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="low"
@@ -198,7 +197,7 @@ class СalorieСounter extends Component {
                             </div>
                             <div className="radio_input">
                                 <input 
-                                    onChange={this.handlerChandeInputActivity} 
+                                    onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="medium"
@@ -207,7 +206,7 @@ class СalorieСounter extends Component {
                             </div>
                             <div className="radio_input">                                
                                 <input 
-                                    onChange={this.handlerChandeInputActivity} 
+                                    onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="high"
@@ -216,7 +215,7 @@ class СalorieСounter extends Component {
                             </div>
                             <div className="radio_input">
                                 <input 
-                                    onChange={this.handlerChandeInputActivity} 
+                                    onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="max"
@@ -226,7 +225,7 @@ class СalorieСounter extends Component {
                         </div>
                         <div className="calculation_button">
                             <button disabled={!this.state.isValid} type="submit">Расчитать</button>
-                            <button>Очистить все поля</button>
+                            <button onClick={this.clearForm} >Очистить все поля</button>
                         </div>
                     </form>
                 </div>
