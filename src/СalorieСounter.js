@@ -119,9 +119,17 @@ class СalorieСounter extends Component {
 
     clearForm = (event) => {
         event.preventDefault();
-        console.log('Привет, Мир!');
-
-
+        this.setState({
+                    age: 0,
+        weight: 0,
+        height: 0,
+        activity: "",
+        gender: "",
+        isValid: false,
+        resultCaloriesNorm: "",
+        resultCaloriesMin: "",
+        resultCaloriesMax:"",
+        })
     }
 
     render () {
@@ -132,25 +140,29 @@ class СalorieСounter extends Component {
                     <form onSubmit={this.handlerSumbit}>
                         <h2>Пол</h2>
                         <div className="button_gender">
-                            <h3>Мужчина</h3>
-                            <input type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="male"/>
-                            <h3>Женщина</h3>
-                            <input type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="female"/>
+                            <div class="form_radio_btn">
+                                <input id="radio-1" type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="male" />
+                                <label for="radio-1">Мужчина</label>
+                            </div>
+                            <div class="form_radio_btn">
+                                <input id="radio-2" type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="female"/>
+                                <label for="radio-2">Женщина</label>
+                            </div>
                         </div>
                         <h3>Физические параметры</h3>
                         <div>
                             <div>
                                 Возраст
-                                <label>
-                                    <input
-                                        onChange={this.handlerChandeInput} 
-                                        type="number" 
-                                        name="age" 
-                                        placeholder="0"
-                                        className="initial_data"
-                                        value={!this.state.age ? "" : this.state.age}
-                                    />
-                                </label>
+                                    <label>
+                                        <input
+                                            onChange={this.handlerChandeInput} 
+                                            type="number" 
+                                            name="age" 
+                                            placeholder="0"
+                                            className="initial_data"
+                                            value={!this.state.age ? "" : this.state.age}
+                                        />
+                                    </label>
                                 Вес
                                 <label>
                                     <input 
@@ -176,56 +188,61 @@ class СalorieСounter extends Component {
                             </div>
                         </div>
                         <h3>Физическая активность</h3>
-                        <div>
-                            <div className="radio_input">
+                        <div class="form">
+                            <div className="form_radio">
                                 <input 
+                                    id="radio-3"
                                     onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value='min'
                                 />
-                                Нет физических нагрузок
+                                <label for="radio-3">Нет физических нагрузок</label>
                             </div>
-                            <div className="radio_input">
-                                <input 
+                            <div className="form_radio">
+                                <input
+                                    id="radio-4" 
                                     onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="low"
                                 />
-                                Низкая физическая активность
+                                <label for="radio-4">Низкая физическая активность</label>
                             </div>
-                            <div className="radio_input">
-                                <input 
+                            <div className="form_radio">
+                                <input
+                                    id="radio-5" 
                                     onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="medium"
                                 />
-                                Средня физическая активность
+                                <label for="radio-5">Средня физическая активность</label>
                             </div>
-                            <div className="radio_input">                                
-                                <input 
+                            <div className="form_radio">                                
+                                <input
+                                    id="radio-6" 
                                     onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="high"
                                 />
-                                Высокая физическая активность
+                                <label for="radio-6">Высокая физическая активность</label>
                             </div>
-                            <div className="radio_input">
-                                <input 
+                            <div className="form_radio">
+                                <input
+                                    id="radio-7" 
                                     onChange={this.handlerChangeRadioButton} 
                                     type="radio" 
                                     name="activity"
                                     value="max"
                                 />
-                                Очень высокая физическая активность
+                                <label for="radio-7">Очень высокая физическая активность</label>
                             </div>
                         </div>
                         <div className="calculation_button">
-                            <button disabled={!this.state.isValid} type="submit">Расчитать</button>
-                            <button onClick={this.clearForm} >Очистить все поля</button>
+                            <button className="btn" disabled={!this.state.isValid} type="submit">Расчитать</button>
+                            <button className="btn" onClick={this.clearForm} >Очистить все поля</button>
                         </div>
                     </form>
                 </div>

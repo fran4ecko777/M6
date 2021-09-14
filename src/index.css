@@ -1,8 +1,21 @@
+
+main {
+	font-style: normal;
+	font-weight: 700;
+	font-family: "PT Sans Caption";
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	background-image: url(./img/food.jpg);
+	background-size: cover; 
+	background-position: center bottom;
+}
+
 .сounteiner {
   width: 350px;
   border-radius: 10px;
   border: 1px solid rgb(243, 243, 243);
-  background-color: rgb(245, 163, 56);
+  background-color: rgb(247, 245, 243);
   padding: 8px;
   margin: 0 auto;
 }
@@ -52,3 +65,104 @@ button {
 .initial_data {
   width: 20%;
 }
+
+.form_radio_btn {
+  width: 50%;  
+  display: flex;
+  justify-content: center;
+}
+
+.form_radio_btn  input[type=radio] {
+	display: none;
+}
+
+.form_radio_btn label {
+	
+	font-weight: 600;
+  	justify-content: center;
+	width: 80%;
+  	display: flex;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid  #fd7d36;
+	border-radius: 6px;
+	user-select: none;
+	
+}
+
+.form_radio_btn input[type=radio]:checked + label {
+	background: #fd7d36;
+	color: white;
+}
+
+.form_radio_btn label:hover {
+	background-color:#fd7d36;
+	color: white;
+}
+
+.form_radio {
+	margin-bottom: 10px;
+}
+
+.form_radio input[type=radio] {
+	display: none;
+}
+
+.form_radio label {
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding-left: 25px;
+	margin-right: 0;
+	line-height: 18px;
+	user-select: none;
+}
+.form_radio label:before {
+	content: "";
+	display: inline-block;
+	width: 17px;
+	height: 18px;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background: url(https://snipp.ru/img/radio-1.png) 0 0 no-repeat;
+}
+
+.form_radio input[type=radio]:checked + label:before {
+	background: url(https://snipp.ru/img/radio-2.png) 0 0 no-repeat;
+}
+
+.form_radio label:hover:before {
+	filter: brightness(120%);
+}
+
+.btn {
+	display: inline-block;	
+	box-sizing: border-box;
+	outline: none;
+	border: none;  
+	border-radius: 6px;
+	line-height: 40px;
+	font-weight: 600;
+	color: #ffffff;
+	background-color: #fd7d36;
+	cursor: pointer;
+}
+.btn:focus-visible {
+	box-shadow: 0 0 0 2px rgb(241, 8, 8);
+}
+
+.btn:hover {
+	background-color: #f30000;
+}
+
+.btn:active {
+	transform: scale(0.96);
+}
+
+.btn:disabled {
+	pointer-events: none;
+	opacity: 0.65;
+}
+
