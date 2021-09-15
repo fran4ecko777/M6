@@ -120,15 +120,15 @@ class СalorieСounter extends Component {
     clearForm = (event) => {
         event.preventDefault();
         this.setState({
-                    age: 0,
-        weight: 0,
-        height: 0,
-        activity: "",
-        gender: "",
-        isValid: false,
-        resultCaloriesNorm: "",
-        resultCaloriesMin: "",
-        resultCaloriesMax:"",
+            age: 0,
+            weight: 0,
+            height: 0,
+            activity: "",
+            gender: "",
+            isValid: false,
+            resultCaloriesNorm: "",
+            resultCaloriesMin: "",
+            resultCaloriesMax:"",
         })
     }
 
@@ -141,11 +141,25 @@ class СalorieСounter extends Component {
                         <h2>Пол</h2>
                         <div className="button_gender">
                             <div class="form_radio_btn">
-                                <input id="radio-1" type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="male" />
+                                <input 
+                                    id="radio-1" 
+                                    type="radio" 
+                                    name="gender" 
+                                    onChange={this.handlerChangeRadioButton} 
+                                    value="male" 
+                                    checked={this.state.gender == "male" ? "checked" : false} 
+                                />
                                 <label for="radio-1">Мужчина</label>
                             </div>
                             <div class="form_radio_btn">
-                                <input id="radio-2" type="radio" name="gender" onChange={this.handlerChangeRadioButton} value="female"/>
+                                <input 
+                                    id="radio-2" 
+                                    type="radio" 
+                                    name="gender" 
+                                    onChange={this.handlerChangeRadioButton} 
+                                    value="female"
+                                    checked={this.state.gender == "female" ? "checked" : false} 
+                                />
                                 <label for="radio-2">Женщина</label>
                             </div>
                         </div>
