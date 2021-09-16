@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ResultCalories from "./ResultCalories";
+
 
 class СalorieСounter extends Component {
     state = {
@@ -11,6 +13,7 @@ class СalorieСounter extends Component {
         resultCaloriesNorm: "",
         resultCaloriesMin: "",
         resultCaloriesMax:"",
+        display: "none",
     }
 
     checkAllInputsNotEpmty(newState) {
@@ -65,6 +68,12 @@ class СalorieСounter extends Component {
         } else if (this.state.gender === "female") {
             return -160;
         }
+    }
+
+    closeResultCalories = () => {
+        // let display = this.state.display === "none" ? "block" : "none";
+        this.setState({display:"block"});
+        console.log(this.state.display)
     }
 
     getCoefficientActivity () {
@@ -129,7 +138,9 @@ class СalorieСounter extends Component {
             resultCaloriesNorm: "",
             resultCaloriesMin: "",
             resultCaloriesMax:"",
+            display: "none"
         })
+        console.log(this.state.display)
     }
 
     render () {
@@ -147,7 +158,7 @@ class СalorieСounter extends Component {
                                     name="gender" 
                                     onChange={this.handlerChangeRadioButton} 
                                     value="male" 
-                                    checked={this.state.gender == "male" ? "checked" : false} 
+                                    checked={this.state.gender === "male" ? "checked" : false} 
                                 />
                                 <label for="radio-1">Мужчина</label>
                             </div>
@@ -158,7 +169,7 @@ class СalorieСounter extends Component {
                                     name="gender" 
                                     onChange={this.handlerChangeRadioButton} 
                                     value="female"
-                                    checked={this.state.gender == "female" ? "checked" : false} 
+                                    checked={this.state.gender === "female" ? "checked" : false} 
                                 />
                                 <label for="radio-2">Женщина</label>
                             </div>
@@ -210,6 +221,7 @@ class СalorieСounter extends Component {
                                     type="radio" 
                                     name="activity"
                                     value='min'
+                                    checked={this.state.activity === "min" ? "checked" : false}
                                 />
                                 <label for="radio-3">Нет физических нагрузок</label>
                             </div>
@@ -220,6 +232,7 @@ class СalorieСounter extends Component {
                                     type="radio" 
                                     name="activity"
                                     value="low"
+                                    checked={this.state.activity === "low" ? "checked" : false}
                                 />
                                 <label for="radio-4">Низкая физическая активность</label>
                             </div>
@@ -230,6 +243,7 @@ class СalorieСounter extends Component {
                                     type="radio" 
                                     name="activity"
                                     value="medium"
+                                    checked={this.state.activity === "medium" ? "checked" : false}
                                 />
                                 <label for="radio-5">Средня физическая активность</label>
                             </div>
@@ -240,6 +254,7 @@ class СalorieСounter extends Component {
                                     type="radio" 
                                     name="activity"
                                     value="high"
+                                    checked={this.state.activity === "high" ? "checked" : false}
                                 />
                                 <label for="radio-6">Высокая физическая активность</label>
                             </div>
@@ -250,22 +265,23 @@ class СalorieСounter extends Component {
                                     type="radio" 
                                     name="activity"
                                     value="max"
+                                    checked={this.state.activity === "max" ? "checked" : false}
                                 />
                                 <label for="radio-7">Очень высокая физическая активность</label>
                             </div>
                         </div>
                         <div className="calculation_button">
-                            <button className="btn" disabled={!this.state.isValid} type="submit">Расчитать</button>
+                            <button className="btn" onClick={this.closeResultCalories} disabled={!this.state.isValid} type="submit">Расчитать</button>
                             <button className="btn" onClick={this.clearForm} >Очистить все поля</button>
                         </div>
                     </form>
                 </div>
-                <div className="сounteiner">
-                    <h2>Ваша норма калорий</h2>
-                    <div>Для снижение веса {this.state.resultCaloriesMin}</div>
-                    <div>Для подержания веса {this.state.resultCaloriesNorm}</div>
-                    <div>Для наборa веса {this.state.resultCaloriesMax}</div>
-                </div>
+                <ResultCalories
+                    display={this.state.display} 
+                    resultCaloriesMin = {this.state.resultCaloriesMin}
+                    resultCaloriesNorm = {this.state.resultCaloriesNorm}
+                    resultCaloriesMax = {this.state.resultCaloriesMax}
+                />
             </main>
         )
     }
