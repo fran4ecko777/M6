@@ -175,7 +175,7 @@ class СalorieСounter extends Component {
                             </div>
                         </div>
                         <h3>Физические параметры</h3>
-                        <div>
+                        <div className="body_type">
                             <div>
                                 Возраст
                                     <label>
@@ -224,6 +224,7 @@ class СalorieСounter extends Component {
                                     checked={this.state.activity === "min" ? "checked" : false}
                                 />
                                 <label for="radio-3">Нет физических нагрузок</label>
+                                <div className="inform_active">Сидячая работа и нет физических нагрузок</div>
                             </div>
                             <div className="form_radio">
                                 <input
@@ -235,6 +236,7 @@ class СalorieСounter extends Component {
                                     checked={this.state.activity === "low" ? "checked" : false}
                                 />
                                 <label for="radio-4">Низкая физическая активность</label>
+                                <div className="inform_active">Редкие, нерегулярные тренировки, активность в быту</div>
                             </div>
                             <div className="form_radio">
                                 <input
@@ -246,6 +248,7 @@ class СalorieСounter extends Component {
                                     checked={this.state.activity === "medium" ? "checked" : false}
                                 />
                                 <label for="radio-5">Средня физическая активность</label>
+                                <div className="inform_active">Тренировки 3-5 раз в неделю</div>
                             </div>
                             <div className="form_radio">                                
                                 <input
@@ -257,6 +260,7 @@ class СalorieСounter extends Component {
                                     checked={this.state.activity === "high" ? "checked" : false}
                                 />
                                 <label for="radio-6">Высокая физическая активность</label>
+                                <div className="inform_active">Тренировки 6-7 раз в неделю</div>
                             </div>
                             <div className="form_radio">
                                 <input
@@ -268,11 +272,12 @@ class СalorieСounter extends Component {
                                     checked={this.state.activity === "max" ? "checked" : false}
                                 />
                                 <label for="radio-7">Очень высокая физическая активность</label>
+                                <div className="inform_active">Больше 6 тренировок в неделю и физическая работа</div>
                             </div>
                         </div>
-                        <div className="calculation_button">
-                            <button className="btn" onClick={this.closeResultCalories} disabled={!this.state.isValid} type="submit">Расчитать</button>
-                            <button className="btn" onClick={this.clearForm} >Очистить все поля</button>
+                            <div className="calculation_button">
+                                <button className="btn" onClick={this.closeResultCalories} disabled={!this.state.isValid} type="submit">Расчитать</button>
+                                <button className="btn" onClick={this.clearForm} >Очистить все поля</button>
                         </div>
                     </form>
                 </div>
